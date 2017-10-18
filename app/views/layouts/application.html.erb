@@ -9,6 +9,28 @@
   </head>
 
   <body>
+    <nav>
+      <div class="nav-wrapper">
+        <ul class="right hide-on-med-and-down">
+          <% if user_signed_in? %>
+          <li><%= current_user.email %></li>
+          <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+          <li><%= link_to 'Registrar', new_user_registration_path %></li><li></li>
+          <li><%= link_to 'Entrar', new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <% if notice or alert %>
+    <div class="card blue">
+      <div class="card-content white-text">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+    </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
