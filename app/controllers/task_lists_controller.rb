@@ -2,7 +2,7 @@ class TaskListsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @task_lists = TaskList.all
+    @task_lists = current_user.task_lists.all
   end
 
 end
